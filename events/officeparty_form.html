@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pushster&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap" rel="stylesheet"> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="form.css">
+
+    <script>
+        function acceptCookies(){
+            var customObject = {};
+            customObject.name=window.document.forms.form1.name.value;
+            customObject.email=window.document.forms.form1.email.value;
+            customObject.event=window.document.forms.form1.event.value;
+            customObject.members=window.document.forms.form1.members.value;
+            customObject.cardtype=window.document.forms.form1.card_type.value;
+
+            customObject.cardnum=window.document.forms.form1.cardnumber.value;
+            customObject.cvvv=window.document.forms.form1.cvv.value;
+
+
+            var jsonString=JSON.stringify(customObject);
+
+            document.cookie="cookieObject="+jsonString;
+
+            alert('Event Registered Successfully');
+
+
+        }
+
+        function nameValidate(){
+            var name_=window.document.forms.form1.name.value;
+            var nameregex=/[0-9\!@#$%^&*()_=+*`~]/;
+            if(name_==''){
+
+                alert('Please enter your name!');
+
+            }
+            
+            else if(nameregex.test(name_)){
+                
+                alert('Enter characters only!');
+
+            }
+
+        }
+
+        function emailValidate(){
+
+            var mail=window.document.forms.form1.email.value;
+            var mailregex=/^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/
+            if(mail == ''){
+
+                alert('Please enter your email id');
+            }
+            else if(!mailregex.test(mail)){
+
+                alert('Enter valid email id');
+            }
+            
+            
+        }
+
+        function memberValidate(){
+
+            var members_=window.document.forms.form1.members.value;
+            var memberregex=/[0-9]/;
+            if(!memberregex.test(members_)){
+                alert('Enter numbers only');
+            
+            }
+            else if((members_) > 300){
+                alert('Maximum members limit upto 300')
+
+            }
+            else if((members_) <= 0){
+                alert('Enter valid members');
+            }
+        }
+
+        function cardnumValidate(){
+            var cardnum_= window.document.forms.form1.cardnumber.value;
+            var cardnumregex=/[0-9]/;
+
+             if(!cardnumregex.test(cardnum_)){
+
+                alert('Enter valid debit card number');
+                
+            }
+            else if(cardnum_ < 0){
+                alert('Enter valid debit card number');
+
+            }
+            else if(cardnum_.length > 16){
+                alert('Enter valid debit card number');
+
+            }
+            else if(cardnum_.length < 16){
+                alert('Enter valid debit card number');
+
+            }
+            
+           
+        }
+
+        function cvvValidate(){
+            var cvvnum = window.document.forms.form1.cvv.value;
+            var cvvregex=/[a-zA-Z\`~@!#$%^&*()_+=]/;
+            if(cvvnum==''){
+
+                alert('Please enter your CVV');
+            }
+            else if(cvvregex.test(cvvnum)){
+
+                alert('Enter valid CVV');
+
+            }
+            else if(cvvnum < 0){
+                alert('Enter valid CVV');
+
+            }
+            else if(cvvnum.length > 3){
+
+                alert('Enter 3-digit valid CVV');
+            }
+            else if(cvvnum.length < 3){
+                alert('Enter 3-digit valid CVV');
+
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <form action="" name="form1">
+        <p class="heading">Payment form for Event</p>
+        <p class="heading-2">Personal Details</p>
+        <div class="payment">
+        <p class="details">Name: <input type="text" placeholder="Enter Name" name="name" onblur="nameValidate()"></p>
+
+        <p class="details">Email: <input type="email" placeholder="Enter Email id" name="email" class="email" onblur="emailValidate()"></p>
+
+        <p class="details">Event Name: <input type="text" value="Office Party" name="event" readonly></p>
+        
+        <p class="details">Number of Members <input type="number" placeholder="Enter no. of members" name="members" onblur="memberValidate()"></p>
+        <!-- <p class="heading-2">Payment Info</p> -->
+        <div class="cards">
+            <p>WE ACCEPT</p>
+            <img src="../images/pngegg.png" alt="" width="200" height="200">
+            <img src="../images/pngegg (2).png" alt="" width="200" height="200">
+            <img src="../images/pngegg (1).png" alt="" width="200" height="200">
+        </div>
+        <p class="details">Card Type: 
+            <select name="card_type" id="">
+                <!-- <option value="1">--Select card type</option> -->
+                <option value="Visa">Visa</option>
+                <option value="Rupay">Rupay</option>
+                <option value="Mastercard">Mastercard</option>
+            </select>   
+        </p>      
+        <p class="details">
+            Debit Card Number: <input type="number" name="cardnumber" onblur="cardnumValidate()"> 
+        </p>
+        <p class="details">CVV: <input type="password" name="cvv" onblur="cvvValidate()"></p>
+        <a class="details" ><button type="button" onclick="acceptCookies()">REGISTER</button></a>
+    </div>
+    </form>
+</body>
+</html>

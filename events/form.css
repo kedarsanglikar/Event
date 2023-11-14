@@ -1,0 +1,32 @@
+.heading {
+    text-align: center;
+    font-size: 5rem;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 300;
+}
+.heading-2{
+    font-size: 2rem;
+    margin-left: 3rem;
+    font-family: 'Poppins',sans-serif;
+}
+.details{
+    font-family: 'Roboto',sans-serif;
+    font-size: 1.2rem;
+    margin-left: 5rem;
+}
+.cards{
+    text-align: center;
+}
+.cards p{
+    font-size: 2.9rem;
+    font-weight: 100;
+    font-family: 'Poppins',sans-serif;
+}
+button{
+    background-color: white;
+    color: black;
+    font-size: 1rem;
+    border-radius: 7px;
+    padding: 10px;
+    border: 3px solid black;
+}
